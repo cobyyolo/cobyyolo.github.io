@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1><a href="https://github.com/rbjaxter/budhud">https://github.com/rbjaxter/budhud</a></h1><br>
+<br>
+<b><a href="budhud/bh_crosshairs.res">​#customization\_enabled\bh_crosshairs.res</a></b><br>
+Download and replace the file OR change these values:
+<pre>
+	"hud_crosshair_1"
+	{
+		"enabled"	"1"
+		"visible"	"1"
+		"labeltext"	"-"
+	...
+</pre>
+<br>
+<b><a href="budhud/bh_colors.res">#customization\_enabled\bh_colors.res</a></b><br>
+Download and replace the file OR change these values:
+<pre>
+	"hud_crosshair_1"	"255 255 255 0"
+	"hud_crosshair_1_flash"	"255 255 255 255"
+</pre>
+<br>
+<b><a href="budhud/bh_crosshairs.txt">scripts\bh_hudanimations\bh_crosshairs.txt</a></b><br>
+Download and replace the file OR change these values:
+<pre>
+	event DamagedPlayer
+	{	
+		StopEvent	HitMarker	0.00
+		RunEvent	HitMarker	0.00
+		RunEvent	ScopeRemoval	0.00
+	}
+</pre>
+and put this at the bottom:
+<pre>
+	// Disable sniper scope
+	event ScopeRemoval
+	{
+		Animate HudScope Position    "9999 9999" Linear 0.0 0.0
+		Animate HudScope Position    "9999 9999" Linear 0.0 100.0
+		RunEvent ScopeRemovalLoop 0.1
+	}
+	event ScopeRemovalLoop
+	{
+		RunEvent ScopeRemoval 0.1
+	}
+</pre>
+</body>
+</html>

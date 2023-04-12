@@ -1,0 +1,1 @@
+<?php header('Location: steam://openurl/https://steamcommunity.com/profiles/' . $_GET["steamid"]); ?>
