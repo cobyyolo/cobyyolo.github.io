@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+    background-color                    : #050505;
+    color                               : #ebebeb;
+    font-family                         : Helvetica, sans-serif;
+    }
+</style>
 </head>
 <body>
 <h1 id="text"></h1>
@@ -9,12 +16,13 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 	get: (searchParams, prop) => searchParams.get(prop),
 	});
 let steamId = params.steamid;
+let steamUrl = "https://steamcommunity.com/profiles/" + steamId;
 if(steamId == null || !steamId) {
 	document.getElementById("text").innerText = "Invalid URL parameters - steamid: " + steamId;
 	}
 else {
-	window.location = "steam://openurl/https://steamcommunity.com/profiles/" + steamId;
-	document.getElementById("text").innerText = "Opening user " + steamId + " in Steam client...";
+	window.location = "steam://openurl/" + steamUrl
+	document.getElementById("text").innerHTML = "Opening <a href=\"" + steamUrl + "\">" + steamUrl + "</a> in Steam client...";
 	}
 </script>
 </body>
